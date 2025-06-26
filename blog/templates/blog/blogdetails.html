@@ -1,0 +1,127 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load social_share %}
+{% block header %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <style>
+    .share-btn-container {
+        background: transparent;
+        display: flex;
+        flex-direction: row;
+        padding: 3px;
+    }
+
+    .share-btn-container a i {
+        font-size: 17px;
+    }
+
+    .share-btn-container a {
+        margin: 0 10px;
+        transition: 500ms;
+    }
+
+     .share-btn-container a:hover {
+         transform: scale(1.5);
+     }
+
+    .share-btn-container .fa-facebook{
+        {#color: #3b5998;#}
+        color: black;
+    }
+
+    .share-btn-container .fa-twitter{
+        {#color: #1da1f2;#}
+        color: black;
+    }
+
+    .share-btn-container .fa-pinterest {
+        color: black;
+        {#color: #bd081c;#}
+    }
+
+    .share-btn-container .fa-whatsapp{
+        color: black;
+        {#color: #25d366;#}
+    }
+
+    .share-btn-container .fa-linkedin{
+        color: black;
+        {#color: #0077b5;#}
+    }
+
+    </style>
+
+{% endblock header %}
+{% block body %}
+	<!-- Body Start -->
+	<div class="wrapper">
+		<div class="gambo-Breadcrumb">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="/">Home</a></li>
+								<li class="breadcrumb-item"><a href="{% url 'blog:bloghome' %}">Blog</a></li>
+								<li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
+{#                                {% if user.is_authenticated %}#}
+{#                                    {% if user.id == post.author.id %}#}
+{#                                        <li class="breadcrumb-item"><a href="{% url 'blog:edit_post' post.slug %}">Edit</a></li>#}
+{#                                        <li class="breadcrumb-item" ><a href="{% url 'blog:delete_post' post.slug%}" style="color: red">(Delete)</a></li>#}
+{#                                    {% endif %}#}
+{#                                {% endif %}#}
+                            </ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="blog-dt-vw parallax" style=" background-image: url('/media/{{ post.blog_image }}');">
+			<div class="blog-inner">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 col-md-12">
+							<h1>{{ post.title }}</h1>
+							<div class="extra-info">
+{#								<span class="entry-date">{{ post.time }}</span>#}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="blog-single-dts-text">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-10">
+						<div class="bb-des12">
+							 <div class="blog-des-dt142">
+                                 {{ post.body|safe }}
+                             </div>
+                             <br/>
+                             <div class="share-btn-container">
+                                 <a target="_blank" href="#" class="facebook-bt">
+                                     <i class="fab fa-facebook"></i>
+                                 </a>
+                                 <a target="_blank" href="#" class="twitter-bt">
+                                     <i class="fab fa-twitter"></i>
+                                 </a>
+                                 <a target="_blank" href="#" class="pinterest-bt">
+                                     <i class="fab fa-pinterest"></i>
+                                 </a>
+                                 <a target="_blank" href="#" class="whatsapp-bt">
+                                     <i class="fab fa-whatsapp"></i>
+                                 </a>
+                                 <a target="_blank" href="#" class="linkedin-bt">
+                                     <i class="fab fa-linkedin"></i>
+                                 </a>
+                             </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Body End -->
+    <script src="{% static 'js/blog.js' %}"></script>
+{% endblock %}

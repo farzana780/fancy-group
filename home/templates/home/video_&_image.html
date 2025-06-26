@@ -1,0 +1,100 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block header %}
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+    .play
+    {
+        width: 50px;
+        position: absolute;
+        top: 30%;
+        left: 43%;
+        {#cursor: pointer;#}
+        transition: 0.5s;
+    }
+    .col-lg-3:hover .play
+    {
+        opacity: 1;
+    }
+    </style>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock header %}
+
+{% block body %}
+	<!-- Body Start -->
+    <div class="wrapper">
+        <div class="all-product-grid">
+			<div class="container">
+                <div class="product-list-view">
+                    <h1>Image & Video Gallery</h1>
+                    <div class="row">
+                        {% for item in gallery %}
+                            <div class="col-lg-3 col-md-6">
+                                <a  {% if item.video_url %} data-target="#video_{{ item.pk }}" data-toggle="modal" {% else %} data-target="#image_{{ item.pk }}" data-toggle="modal"  {% endif %} class="product-img">
+                                    <img  src="/media/{{item.image}}" class="img-fluid" alt="">
+                                </a>
+                                {% if item.video_url %}
+                                    <a data-target="#video_{{ item.pk }}" data-toggle="modal"><img src="{% static 'images/vicon.jpeg' %}" alt="" class="play"></a>
+                                {% endif %}
+
+                                 <div  class="modal" id="image_{{ item.pk }}">
+                                     <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"> &times; </button>
+                                            </div>
+                                            <div class="modal-body">
+{#                                                            <div class="close my-3 mx-3" style="text-align: right">x</div>#}
+                                                <img height="470" width="470" src="/media/{{item.image}}" alt="">
+                                            </div>
+                                        </div>
+                                     </div>
+                                </div>
+
+                                <div class="modal" id="video_{{ item.pk }}">
+                                     <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content ">
+                                            <div class="modal-body">
+                                               <div class="modal-header">
+                                                  <button type="button" class="close" data-dismiss="modal"> &times; </button>
+                                               </div>
+                                              <div class="modal-body">
+                                                <iframe height="550" width="450" src="{{item.video_url}}" frameborder="0" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+                                              </div>
+                                            </div>
+                                        </div>
+                                     </div>
+                                </div>
+
+                                <div class="product-text-dt">
+                                    <h4>{{item.gallery_title}}</h4>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="pagination">
+{#                        {% if gallery.has_previous %}#}
+{#                            <a href="?page=1"></a>#}
+{#                            <div><a type="button" class="btn btn-outline-primary" href="?page={{ gallery.previous_page_number }}">Previous</a></div>#}
+{#                        {% endif %}#}
+{#                            <button  class="btn btn-light">{{ gallery.number }}</button>#}
+                        {% if gallery.has_next %}
+                            <div class="col-md-12">
+                                <div class="more-product-btn">
+                                    <button class="show-more-btn hover-btn" onclick="window.location.href = '?page={{ gallery.next_page_number}}';">Show More</button>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

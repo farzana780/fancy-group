@@ -1,0 +1,33 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block body %}
+    <!-- Body Start -->
+    <div class="wrapper">
+        <h1>Search</h1>
+        <div class="product-list-view">
+            <div class="row">
+                {% for item in allPost %}
+                    <div class="col-lg-3 col-md-6">
+                        <div class="product-item mb-30">
+                            <a href="{% url 'product:product_details' item.slug%}" class="product-img">
+                                <img src="/media/{{item.image}}" alt="">
+                            </a>
+                            <div class="product-text-dt">
+                                <p>{{item.product_status}}</p>
+                                <h4>{{ item.product_name }}
+                                    <div class="sharethis-inline-share-buttons"></div>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="col-md-12">
+                    <div class="more-product-btn">
+                        <button class="show-more-btn hover-btn" onclick="window.location.href = '#';">Show More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

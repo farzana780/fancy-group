@@ -1,0 +1,31 @@
+{% load static %}
+<div class="section145">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="main-title-tt">
+                    <div class="main-title-left">
+                        <h2>Blog</h2>
+                    </div>
+                    <a href="{% url 'blog:bloghome' %}" class="see-more-btn">See All</a>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="owl-carousel featured-slider owl-theme">
+                    {% for item in blog %}
+                        <div class="item">
+                            <div class="product-item">
+                                <a href="{% url 'blog:blogdetails' item.pk %}" class="product-img">
+                                    <img src="/media/{{item.blog_image}}" alt="">
+                                </a>
+                                <div class="product-text-dt">
+                                    <h4>{{item.title}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

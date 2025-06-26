@@ -1,0 +1,47 @@
+{% extends 'home/base.html' %}
+{% block body %}
+
+   	<!-- Body Start -->
+    <div class="wrapper">
+            <div class="gambo-Breadcrumb">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="{% url 'blog:bloghome' %}">Our Blog</a></li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          {% if user.is_authenticated %}
+                        <div class="gambo-Breadcrumb">
+                            <div class="container">
+                               <h1>Add Blog</h1>
+                                <div class="form-group">
+                                    <form method="post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        {{ form.media }}
+                                        {{ form.as_p }}
+                                        <button class="btn btn-secondary">post</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+              <script>
+                 var name = "{{ user.id }}";
+                  document.getElementById("elder").value = name;
+              </script>
+
+          {% else %}
+               <h3 style="text-align: center;color:red">You are not allowed here! </h3>
+          {% endif %}
+    </div>
+	<!-- Body End -->
+
+
+
+{% endblock %}

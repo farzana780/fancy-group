@@ -1,0 +1,29 @@
+{% load static %}
+<div class="section145">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="main-title-tt">
+                    <div class="main-title-left">
+                        <h2>Best Values </h2>
+                    </div>
+                </div>
+            </div>
+            {% for item in bestvalue %}
+                {% if item.is_big %}
+                    <div class="col-md-12">
+                        <div class="code-offer-item">
+                            <img src="/media/{{ item.img }}" alt="">
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="best-offer-item">
+                            <img src="/media/{{ item.img }}" alt="">
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

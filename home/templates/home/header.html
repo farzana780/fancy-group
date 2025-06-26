@@ -1,0 +1,75 @@
+	{% load static %}
+	<!-- Header Start -->
+	<header class="header clearfix">
+		<div class="top-header-group">
+			<div class="top-header">
+				<div class="res_main_logo">
+					<a href="index.html"><img src="{% static 'images/dark-logo-1.svg' %}" alt=""></a>
+				</div>
+				<div class="main_logo" id="logo">
+					<a href="/"><img src="{% static 'img/logo.png' %}" alt=""></a>
+					<a href="/"><img class="logo-inverse" src="{% static 'images/logo.png' %}" alt=""></a>
+				</div>
+				<div class="search120">
+					<div class="ui search">
+					  <form method="get" action="{% url 'home:search' %}" class="ui left icon input swdh10">
+						<input name="search" id="search" class="prompt srch10" type="text" placeholder="Search for products..">
+						<i class='uil uil-search-alt icon icon1'></i>
+					  </form>
+					</div>
+				</div>
+				<div class="header_right">
+					<ul>
+						<li>
+							<a href="#" class="offer-link"><i class="uil uil-phone-alt"></i>0258150228</a>
+						</li>
+{#						<li>#}
+{#							<a href="#" class="offer-link"><i class="uil uil-gift"></i>Offers</a>#}
+{#						</li>#}
+{#						<li>#}
+{#							<a href="#" class="offer-link"><i class="uil uil-question-circle"></i>Help</a>#}
+{#						</li>#}
+						<li class="ui dropdown">
+							<div class="night_mode_switch__btn">
+                                <a href="#" id="night-mode" class="btn-night-mode">
+                                    <i class="uil uil-moon"></i> Night mode
+                                    <span class="btn-night-mode-switch">
+                                        <span class="uk-switch-button"></span>
+                                    </span>
+                                </a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="sub-header-group">
+			<div class="sub-header">
+
+				<nav class="navbar navbar-expand-lg navbar-light py-3">
+					<div class="container-fluid">
+						<button class="navbar-toggler menu_toggle_btn" type="button" data-target="#navbarSupportedContent"><i class="uil uil-bars"></i></button>
+						<div class="collapse navbar-collapse d-flex flex-column flex-lg-row flex-xl-row justify-content-lg-end bg-dark1 p-3 p-lg-0 mt1-5 mt-lg-0 mobileMenu" id="navbarSupportedContent">
+							<ul class="navbar-nav main_nav align-self-stretch">
+								<li class="nav-item"><a href="/" class="nav-link active" title="Home">Home</a></li>
+								<li class="nav-item"><a href="{% url 'product:product' %}" class="nav-link new_item" title="New Products">Products</a></li>
+								<li class="nav-item"><a href="{% url 'others:career' %}" class="nav-link" title="Career">Career</a></li>
+								<li class="nav-item"><a href="{% url 'blog:bloghome' %}" class="nav-link" title="Blog">Blog</a></li>
+								<li class="nav-item"><a href="{% url 'home:gallery' %}" class="nav-link" title="Blog">Gallery</a></li>
+								<li class="nav-item"><a href="{% url 'others:about' %}" class="nav-link" title="Contact">About Us</a></li>
+								<li class="nav-item"><a href="{% url 'others:contact' %}" class="nav-link" title="Contact">Contact Us</a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+				<div class="catey__icon">
+					<a href="#" class="cate__btn" data-toggle="modal" data-target="#category_model" title="Categories"><i class="uil uil-apps"></i></a>
+				</div>
+
+				<div class="search__icon order-1">
+					<a href="#" class="search__btn hover-btn" data-toggle="modal" data-target="#search_model" title="Search"><i class="uil uil-search"></i></a>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- Header End -->

@@ -1,0 +1,170 @@
+
+{% extends 'home/base.html' %}
+{% load static %}
+{% block body %}
+
+    <!-- Body Start -->
+    <div class="wrapper">
+
+		<div class="life-gambo">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="default-title left-text">
+							<h2>About Danish Food Limited</h2>
+							<p>Customers Deserve Better</p>
+							<img src="{% static 'images/line.svg' %}" alt="">
+						</div>
+						<div class="about-content">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac sodales sapien. Sed pellentesque, quam in ornare tincidunt, magna augue placerat nunc, ut facilisis nibh ipsum non ipsum. Cras ac eros non neque viverra consequat sed at est. Fusce efficitur, lacus nec dignissim tincidunt, diam sapien rhoncus neque, at tristique sapien nibh sed neque. Proin in neque in purus luctus facilisis. Donec viverra ligula quis lorem viverra consequat. Aliquam condimentum id enim volutpat rutrum. Donec semper iaculis convallis. Praesent quis elit eget ligula facilisis mattis. Praesent sed euismod dui. Suspendisse imperdiet vel quam nec venenatis. Suspendisse dictum blandit quam, vitae auctor enim gravida et. Sed id dictum nibh. Proin egestas massa sit amet tincidunt aliquet.</p>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="about-img">
+							<img src="{% static 'images/about.svg' %}" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="about-steps-group white-bg">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="about-step">
+							<div class="about-step-img">
+								<img src="{% static 'images/about/icon-1.svg' %}" alt="">
+							</div>
+							<h4>100+</h4>
+							<p>Products</p>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="about-step">
+							<div class="about-step-img">
+								<img src="{% static 'images/about/icon-2.svg' %}" alt="">
+							</div>
+							<h4>30+</h4>
+							<p>Countries</p>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="about-step">
+							<div class="about-step-img">
+								<img src="{% static 'images/about/icon-3.svg' %}" alt="">
+							</div>
+							<h4>5000+</h4>
+							<p>Employees</p>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="about-step">
+							<div class="about-step-img">
+								<img src="{% static 'images/about/icon-4.svg' %}" alt="">
+							</div>
+							<h4>23+</h4>
+							<p>Partner</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="life-gambo">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+
+						<div class="default-title">
+							<h2>Our Team</h2>
+							<p>Teamwork Makes the Dream Work</p>
+							<img src="" alt="">
+						</div>
+						<div class="dd-content">
+
+							<div class="owl-carousel team-slider owl-theme">
+                                {% for member in team %}
+								<div class="item">
+									<div class="team-item">
+										<div class="team-img">
+											<img src="/media/{{ member.image }}" alt="">
+										</div>
+										<h4>{{ member.name }}</h4>
+										<span>{{ member.position }}</span>
+										<ul class="team-social">
+											<li>{% if member.facebookId %}<a  href="{{ member.facebookId }}" class="scl-btn hover-btn"><i class="fab fa-facebook-f"></i></a>{% else %}<div class="scl-btn hover-btn"><i class="fab fa-facebook-f"></i></div></li>{% endif %}
+                                            <li>{% if member.linkedinId %}<a  href="{{ member.linkedinId }}"  class="scl-btn hover-btn"><i class="fab fa-linkedin-in"></i></a>{% else %}<div class="scl-btn hover-btn"><i class="fab fa-linkedin-in"></i></div></li>{% endif %}
+										</ul>
+									</div>
+								</div>
+                                {% endfor %}
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="how-order-gambo">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="default-title">
+							<h2>What do we want to do?</h2>
+							<img src="images/line.svg" alt="">
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="how-order-steps">
+							<div class="how-order-icon">
+								<i class="uil uil-search"></i>
+							</div>
+							<h4>Our responsible feature title here</h4>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="how-order-steps">
+							<div class="how-order-icon">
+								<i class="uil uil-shopping-basket"></i>
+							</div>
+							<h4>Our responsible feature title here</h4>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="how-order-steps">
+							<div class="how-order-icon">
+								<i class="uil uil-stopwatch"></i>
+							</div>
+							<h4>Our responsible feature title here</h4>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="how-order-steps">
+							<div class="how-order-icon">
+								<i class="uil uil-money-bill"></i>
+							</div>
+							<h4>Our responsible feature title here</h4>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="how-order-steps">
+							<div class="how-order-icon">
+								<i class="uil uil-truck"></i>
+							</div>
+							<h4>Our responsible feature title here</h4>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="how-order-steps">
+							<div class="how-order-icon">
+								<i class="uil uil-smile"></i>
+							</div>
+							<h4>Our responsible feature title here</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+	<!-- Body End -->
+
+{% endblock %}

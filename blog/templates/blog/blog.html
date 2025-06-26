@@ -1,0 +1,60 @@
+{% extends 'home/base.html' %}
+{% block body %}
+   	<!-- Body Start -->
+	<div class="wrapper wrapper-blog">
+		<div class="blog-gambo" style="margin-top:20px">
+			<div class="container">
+{#            {% if user.is_authenticated %}#}
+{#                <a type="button" class="btn btn-secondary" href="{% url 'blog:add_post' %}">Add_Post</a>#}
+{#                <a type="button" class="btn btn-secondary" href="{% url 'logout' %}">Logout</a>#}
+{##}
+{#            {% else %}#}
+{#                <a type="button" class="btn btn-secondary" href="{% url 'user:register' %}">Register</a>#}
+{#                <a type="button" class="btn btn-secondary" href="{% url 'login' %}">Login</a>#}
+{##}
+{#            {% endif %}#}
+            	<div class="row">
+                    {% for post in page_obj %}
+                        <div class="col-lg-6 col-md-6">
+                            <div class="blog-item">
+                                <a href="{% url 'blog:blogdetails' post.pk %}" class="blog-img">
+                                    <img src="/media/{{ post.blog_image }}" alt="noimg">
+                                </a>
+{#                                <div class="date-icons-group">#}
+{#                                    <div class="blog-time sz-14">{{ post.time }}</div>#}
+{#                                    <ul class="like-share-icons">#}
+{#                                        <li>#}
+{#                                            <a href="#" class="like-share"><i class="uil uil-thumbs-up"></i><span>5</span></a>#}
+{#                                        </li>#}
+{#                                        <li>#}
+{#                                            <a href="#" class="like-share"><i class="uil uil-share-alt"></i></a>#}
+{#                                        </li>#}
+{#                                    </ul>#}
+{#                                </div>#}
+                                <div class="blog-detail">
+                                    <h4>{{ post.title }}</h4>
+{#                                    <small>By:{{ post.author }}</small>#}
+                                    <p>{{ post.snippet|safe }}</p>
+                                    <a href="{% url 'blog:blogdetails' post.pk %}">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+					{% endfor %}
+                </div>
+                <div>
+                    <span>
+                        {% if page_obj.has_next %}
+                            <div class="col-md-12">
+                                <div class="more-product-btn">
+                                    <button class="show-more-btn hover-btn" onclick="window.location.href = '?page={{ page_obj.next_page_number }}';">Show More</button>
+                                </div>
+                            </div>
+                       {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+	<!-- Body End -->
+
+{% endblock %}

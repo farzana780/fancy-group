@@ -1,0 +1,76 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block body %}
+	<!-- Body Start -->
+    <div class="wrapper">
+		<div class="gambo-Breadcrumb">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="/">Home</a></li>
+								<li class="breadcrumb-item active" aria-current="page">All Products</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="all-product-grid">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="product-top-dt">
+							<div class="product-left-title">
+								<h2>All Products</h2>
+							</div>
+{#							<a class="filter-btn pull-bs-canvas-right">Filters</a>#}
+							<div class="product-sort">
+								<div class="ui selection dropdown vchrt-dropdown">
+									<input name="gender" type="hidden" value="default">
+									<i class="dropdown icon d-icon"></i>
+									<div class="text">{% if cat.category_name %}{{ cat.category_name }}{% else %}Category{% endif %}</div>
+									<div class="menu">
+                                        <a class="item" href="{% url "product:product" %}">All</a>
+                                        {% for c in category %}
+                                            <a class="item"  href="{{ c.get_absolute_url }}">{{ c.category_name }}</a>
+                                        {% endfor %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="product-list-view">
+					<div class="row">
+                        {% for item in product %}
+                            <div class="col-lg-3 col-md-6">
+                                <div class="product-item mb-30">
+                                    <a href="{% url 'product:product_details' slug=item.slug %}" class="product-img">
+                                        <img src="/media/{{item.image}}" alt="">
+                                    </a>
+                                    <div class="product-text-dt">
+                                        <p>{{item.product_status}}</p>
+                                        <h4>{{ item.product_name }}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+					</div>
+                    <div>
+                        <span>
+                            {% if product.has_next %}
+                                <div class="col-md-12">
+                                    <div class="more-product-btn">
+                                        <button class="show-more-btn hover-btn" onclick="window.location.href = '?page={{ product.next_page_number }}';">Show More</button>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

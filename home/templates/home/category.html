@@ -1,0 +1,29 @@
+{% load static %}
+<div class="section145">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="main-title-tt">
+                    <div class="main-title-left">
+                        <h2>Categories</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="owl-carousel cate-slider owl-theme">
+                    {% for item in category %}
+                        <div class="item">
+                            <a href="{{ item.get_absolute_url }}" class="category-item">
+                                <div class="cate-img">
+                                    <img src="/media/{{item.image}}" alt="">
+                                </div>
+                                <h4> {{item.category_name}} </h4>
+                            </a>
+                        </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

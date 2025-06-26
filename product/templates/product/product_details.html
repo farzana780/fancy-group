@@ -1,0 +1,167 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% load social_share %}
+{% block header %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <style>
+    p {
+      color: black;
+    }
+    .share-btn-container {
+        background: transparent;
+        display: flex;
+        flex-direction: row;
+        padding: 16px;
+    }
+
+    .share-btn-container a i {
+        font-size: 18px;
+    }
+
+    .share-btn-container a {
+        margin: 0 10px;
+        transition: 500ms;
+    }
+
+     .share-btn-container a:hover {
+         transform: scale(1.2);
+     }
+
+    .share-btn-container .fa-facebook{
+        {#color: #3b5998;#}
+        color: black;
+    }
+
+    .share-btn-container .fa-twitter{
+        {#color: #1da1f2;#}
+        color: black;
+    }
+
+    .share-btn-container .fa-pinterest{
+        {#color: #bd081c;#}
+        color: black;
+    }
+
+    .share-btn-container .fa-whatsapp{
+        {#color: #25d366;#}
+        color: black;
+    }
+
+    .share-btn-container .fa-linkedin{
+        {#color: #0077b5;#}
+        color: black;
+    }
+
+    </style>
+{% endblock header %}
+
+{% block body %}
+   	<!-- Body Start -->
+	<div class="wrapper">
+		<div class="gambo-Breadcrumb">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{{ product.category.get_absolute_url }}">{{ product.category}}</a></li>
+								<li class="breadcrumb-item active" aria-current="page">{{ product.product_name }}</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="all-product-grid">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="product-dt-view">
+							<div class="row">
+								<div class="col-lg-4 col-md-4">
+										<div class="item">
+											<img class="pinterest_img" src="/media/{{product.image}}" alt="noimage">
+										</div>
+									<div id="sync2" class="owl-carousel owl-theme">
+
+									</div>
+								</div>
+								<div class="col-lg-8 col-md-8">
+									<div class="product-dt-right">
+										<h2>{{ product.product_name }}</h2>
+										<div class="no-stock">
+											<p class="stock-qty"><span>{{ product.product_status }}</span></p>
+										</div>
+										<p class="pp-descp">{{product.product_summery }}</p>
+                                        <div class="share-btn-container">
+                                             <a target="_blank" href="#" class="facebook_btn">
+                                                <i class="fab fa-facebook"></i>
+                                             </a>
+                                             <a target="_blank" href="#" class="twitter_btn">
+                                                <i class="fab fa-twitter"></i>
+                                             </a>
+                                             <a target="_blank" href="#" class="pinterest_btn">
+                                                <i class="fab fa-pinterest"></i>
+                                             </a>
+                                             <a target="_blank" href="#" class="whatsapp_btn">
+                                                <i class="fab fa-whatsapp"></i>
+                                             </a>
+                                             <a target="_blank" href="#" class="linkedin_btn">
+                                                <i class="fab fa-linkedin"></i>
+                                             </a>
+                                        </div>
+									</div>
+								</div>
+							</div>
+						</div>
+                        <br>
+                        <div class="product-dt-view">
+							<div class="row">
+								<div class="col-lg-12 col-md-12">
+							       {{product.Product_details|safe }}
+							    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Featured Products Start -->
+            <div class="section145">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="main-title-tt">
+                                <div class="main-title-left">
+                                    <span>For You</span>
+                                    <h2>Similar Products</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                             <div class="owl-carousel featured-slider owl-theme">
+                                 {% for item in allproduct %}
+                                      <div class="item">
+                                          <div class="product-item">
+                                                <a href="{% url 'product:product_details' slug=item.slug%}" class="product-img">
+                                                    <img src="/media/{{item.image}}" alt="">
+                                                </a>
+                                                <div class="product-text-dt">
+                                                    <p>{{item.product_status}}</p>
+                                                    <h4>{{ item.product_name }}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                 {% endfor %}
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Featured Products End -->
+        </div>
+    </div>
+	<!-- Body End -->
+    <script src="{% static 'js/main.js' %}"></script>
+{% endblock %}
+

@@ -1,0 +1,23 @@
+{% extends 'home/base.html' %}
+
+{% block body %}
+<div class="wrapper">
+
+    <!-- Offers Start -->
+{% include 'home/slider.html' %}
+<!-- Offers End -->
+<!-- Categories Start -->
+{% include 'home/category.html' %}
+
+<!-- Featured Products End -->
+<!-- Best Values Offers Start -->
+ {% include 'home/best_value.html' %}
+<!-- Best Values Offers End -->
+<!-- Vegetables and Fruits Start -->
+{% include 'home/blog.html' %}
+<!-- Vegetables and Fruits Products End -->
+<!-- New Products Start -->
+{% include 'home/gallery.html' %}
+<!-- New Products End -->
+</div>
+{% endblock body %}

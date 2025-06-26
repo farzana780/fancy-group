@@ -1,0 +1,27 @@
+{% load static %}
+<div class="main-banner-slider">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="owl-carousel offers-banner owl-theme">
+                            {% for item in coming_pr %}
+                                <div class="item">
+                                    <div class="offer-item">
+                                        <div class="offer-item-img">
+                                            <div class="gambo-overlay"></div>
+                                            <img src="/media/{{ item.image }}" alt="">
+                                        </div>
+                                        <div class="offer-text-dt">
+                                            <div class="offer-top-text-banner">
+                                                <div class="top-text-1">{{ item.product_category }}</div>
+                                                <span>{{ item.product_title }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+							 {% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>

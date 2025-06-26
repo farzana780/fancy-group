@@ -1,0 +1,82 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block body %}
+    <!-- Body Start -->
+	<div class="wrapper">
+		<div class="life-gambo white-bg">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="default-title">
+                             <div class="form-group">
+                                {% if messages %}
+                                    <ul class="messages">
+                                    {% for message in messages %}
+                                        <li>
+                                        <div class="alert alert-success">{{ message }}
+                                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                     <span aria-hidden="true">&times;</span>
+                                             </button>
+                                        </div>
+                                        </li>
+                                    {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </div>
+							<h2>The benefits of working at Danish Food Limited</h2>
+							<p>We want you to feel like home when you're working at Gambo and for that we've curated a great set of benefits for you.</p>
+							<img src="{% static 'images/line.svg' %}" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+
+		<div class="jobs-gambo my-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="default-title">
+							<h2>Work With Us</h2>
+							<p>Have the appetite to discover, learn and build with the team.</p>
+							<img src="{% static 'images/line.svg' %}" alt="">
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="pdpt-bg">
+							<div class="pd-20">
+								<div class="all-departments">
+									<h4>Departments</h4>
+                                    <ul>
+                                        <li>
+                                            <a href="{% url "others:career" %}">All</a>
+                                        </li>
+                                    {% for dp in department %}
+                                        <li>
+                                        <a href="{{ dp.get_absolute_url }}">{{ dp.department_name }}</a>
+                                        </li>
+                                    {% endfor %}
+                                    </ul>
+                                </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-8">
+                    {% for job in circular %}
+						<a href="{% url 'others:job_details' %}?id={{ job.slug }}" class="job-bg1">
+							<div class="job-item">
+                                <h4> {{ job.job_title }}</h4>
+                                <h5 > <pre class="tab" , style="color: #0d71bb"> {{ job.job_type }}      {{ job.salary }}  </pre></h5>
+							</div>
+							<i class="uil uil-angle-right-b arrow-icon"></i>
+						</a>
+
+                        {% endfor %}
+                    </div>
+				</div>
+			</div>
+		</div>
+    </div>
+	<!-- Body End -->
+
+{% endblock %}

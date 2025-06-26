@@ -1,0 +1,70 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block body %}
+   	<!-- Body Start -->
+    <div class="wrapper">
+		<div class="gambo-Breadcrumb">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="/">Home</a></li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="all-product-grid">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-6">
+						<div class="contact-title">
+							<h2>Apply Here for the position of {{ job.job_title }}</h2>
+						</div>
+						<div class="contact-form">
+							 <form action="{% url 'others:job_apply' %}?id={{ job.slug }}" method="post">
+                                    {% csrf_token %}
+                                    <div class="form-group mt-1">
+                                        <label class="control-label">Full Name*</label>
+                                        <div class="ui search focus">
+                                            <div class="ui left icon input swdh11 swdh19">
+                                                <input class="prompt srch_explore" type="text" name="full_name" id="full_name" required="" placeholder="Your Full Name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mt-1">
+                                        <label class="control-label">Email Address*</label>
+                                        <div class="ui search focus">
+                                            <div class="ui left icon input swdh11 swdh19">
+                                                <input class="prompt srch_explore" type="email" name="emailaddress" id="emailaddress" required="" placeholder="Your Email Address">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mt-1">
+                                        <label class="control-label">Phone Number*</label>
+                                        <div class="ui search focus">
+                                            <div class="ui left icon input swdh11 swdh19">
+                                                <input class="prompt srch_explore" type="number" name="phone_number" id="phone" required="" placeholder="Your Phone Number">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mt-1">
+                                        <label class="control-label">Upload your CV/Resume*</label>
+                                        <div  class="ui search focus">
+                                            <input style="padding: 8px" class="prompt srch_explore" type="file" name="file" id="file" required="" placeholder="file">
+                                        </div>
+                                    </div>
+                                    <button  class="next-btn16 hover-btn mt-3" type="submit" data-btntext-sending="Sending...">Submit Application</button>
+                             </form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+	<!-- Body End -->
+{% endblock %}
+

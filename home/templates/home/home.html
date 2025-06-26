@@ -1,0 +1,166 @@
+{% extends 'home/base.html' %}
+{% block body %}
+
+{#  <!-- Upcoming product -->#}
+{##}
+{#<div id="demo" class="carousel slide" data-ride="carousel">#}
+{#<ul class="carousel-indicators">#}
+{#  <li data-target="#demo" data-slide-to="0" class="active"></li>#}
+{#  {% for i in range %}#}
+{#  <li data-target="#demo" data-slide-to="{{i}}" ></li>#}
+{#  {% endfor %}#}
+{#</ul>#}
+{##}
+{#<div class="carousel-inner no padding">#}
+{#<div class="carousel-item active">#}
+{# {% for i in coming_pr %}#}
+{#<div class="col-xs-3 col-sm-3 col-md-3">#}
+{#   <div class="card my-4" style="width: 23rem; height: 15rem ; background-image: url('/media/{{i.image}}');">#}
+{#       <div style="background-color: white; width: 13rem; height: auto " class="my-4" >#}
+{#       <h5 class="card-title mx-3">{{i.product_title }}</h5>#}
+{#        <p class="card-text mx-3">{{i.Product_category }}</p>#}
+{#       </div>#}
+{##}
+{#</div>#}
+{#</div>#}
+{##}
+{#  {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}#}
+{#</div>#}
+{#<div class="carousel-item ">#}
+{#{% endif %}#}
+{#{% endfor %}#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+
+
+    <!-- product_category -->
+
+
+<div id="demo1" class="carousel slide my-4" data-ride="carousel">
+<ul class="carousel-indicators">
+  <li data-target="#demo1" data-slide-to="0" class="active"></li>
+  {% for i in cat_range %}
+  <li data-target="#demo1" data-slide-to="{{i}}" ></li>
+  {% endfor %}
+</ul>
+
+<div class="container carousel-inner ">
+<h2 class="my-5">Category</h2>
+<div class="carousel-item active">
+ {% for i in cat %}
+<div class="col-xs-3 col-sm-3 col-md-3 ">
+
+<div class="card" style="width: 18rem;">
+    <img src='/media/{{i.image}}' class="card-img-top" alt="cat">
+       <div class="card-body">
+            <h5 class="card-text">{{i.category_name }}</h5>
+       </div>
+</div>
+
+</div>
+{% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+</div>
+<div class="carousel-item ">
+{% endif %}
+{% endfor %}
+</div>
+
+         <!-- Best_product-->
+
+<h2 class="my-5">Best Values</h2>
+
+{% for i in bestpro %}
+
+<div class="col-lg-4 col-md-6" style=" display: inline-block;
+    margin-left: -4px;">
+
+		<a href="#" class="best-offer-item">
+            <img src="/media/{{i.img}}" alt="">
+		</a>
+</div>
+
+{% endfor %}
+
+   <!-- Blog-->
+
+        <div class="section145">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="main-title-tt">
+							<div class="main-title-left">
+								<span>Danish</span>
+								<h2 class="my-4">Blog</h2>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-md-12">
+						<div class="owl-carousel featured-slider owl-theme">
+							<div class="item">
+                                {% for i in blog %}
+
+								<div class="product-item" style=" display: inline-block; margin-left: -4px;">
+									<a href="#" class="product-img mr-4">
+										<img src="/media/{{i.blog_image}}" alt="" style="width: 10rem; height: 10rem">
+									</a>
+									<div class="product-text-dt">
+										<h4>{{i.blog_title}}</h4>
+									</div>
+								</div>
+                                    {% endfor %}
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+ <!-- Gallery-->
+
+<!-- New Products Start -->
+		<div class="section145">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="main-title-tt">
+							<div class="main-title-left">
+								<span>Danish</span>
+								<h2 class="my-4">Photo & Video Gallary</h2>
+							</div>
+							<a href="#" class="see-more-btn">See All</a>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="owl-carousel featured-slider owl-theme">
+							<div class="item" >
+                                {% for i in gallery %}
+
+								<div class="product-item"  style=" display: inline-block; margin-left: -4px;">
+									<a href="#" class="product-img mr-4">
+										<img src="/media/{{i.pv_image}}" alt="" style="width: 10rem; height: 10rem">
+									</a>
+									<div class="product-text-dt">
+										<h4>{{i.pv_title}}</h4>
+									</div>
+								</div>
+					               {% endfor %}
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+</div>
+</div>
+
+
+{% endblock %}
+

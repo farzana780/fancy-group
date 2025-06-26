@@ -1,0 +1,43 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block body %}
+   	<!-- Body Start -->
+    <div class="wrapper">
+		<div class="gambo-Breadcrumb">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">{{ job.job_title }}</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="all-product-grid">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-6">
+						<div class="contact-form">
+                            <h1>{{ job.job_title }}</h1>
+                            <p style="color: black"> {{ job.job_details|safe }}<br>
+                                <b>{{ job.job_type }}<br>
+                                {{ job.department_name }}<br>
+                                    {{ job.salary }}</b>
+                            </p>
+                            <div class="col-md-12">
+                                <div class="more-product-btn">
+                                    <button class="show-more-btn hover-btn" onclick="window.location.href = '{% url 'others:job_apply' %}?id={{ job.slug }}';">Apply</button>
+                                </div>
+                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+	<!-- Body End -->
+{% endblock %}
