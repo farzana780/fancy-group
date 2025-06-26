@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "fancygroup/wsgi.py",
+      "src": "FancyProject/wsgi.py",
       "use": "@vercel/python",
       "config": {"maxLambdaSize": "15mb", "runtime": "python3.x"}
     },
@@ -17,7 +17,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "fancygroup/wsgi.py"
+      "dest": "FancyProject/wsgi.py"
     },
     {
       "src": "/static/(.*)",
